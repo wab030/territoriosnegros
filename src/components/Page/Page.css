@@ -5,14 +5,36 @@
 
 .Page .ArrowLeft {
     position: absolute;
-    top: 50%;
-    left: 5px;
+    bottom: 50%;
+    left: 1px;
     transform: translate(0, -50%);
 }
 
 .Page .ArrowRight {
     position: absolute;
-    top: 50%;
-    right: 5px;
+    bottom: 50%;
+    right: 1px;
     transform: translate(0, -50%);
 }
+
+.Page .Image-Container {
+  background-color: black;
+  height: 110vh;
+}
+
+.Page .Arrow-Left-Container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 50%);
+  height: 100vh;
+}
+
+.Page .Arrow-Right-Container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: calc(100% - 50%);
+  height: 100vh;
+}
+
