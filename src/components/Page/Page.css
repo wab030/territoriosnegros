@@ -1,0 +1,18 @@
+.Page {
+    color: black;
+    position: relative;
+}
+
+.Page .ArrowLeft {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translate(0, -50%);
+}
+
+.Page .ArrowRight {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translate(0, -50%);
+}
