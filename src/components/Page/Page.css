@@ -5,16 +5,22 @@
 
 .Page .ArrowLeft {
     position: absolute;
-    bottom: 50%;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    width: 40px;
+    /* bottom: 50%;
     left: 1px;
-    transform: translate(0, -50%);
+    transform: translate(0, -50%); */
 }
 
 .Page .ArrowRight {
     position: absolute;
-    bottom: 50%;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    width: 40px;
+    /* bottom: 50%;
     right: 1px;
-    transform: translate(0, -50%);
+    transform: translate(0, -50%); */
 }
 
 .Page .Image-Container {
@@ -37,4 +43,10 @@
   width: calc(100% - 50%);
   height: 100vh;
 }
+
+/* .Page .Circle-Arrow {
+  height: 20px;
+  background-color: black;
+  border-radius: 50%;
+} */
 

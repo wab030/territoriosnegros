@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import ReactTouchEvents from "react-touch-events";
+// import ReactTouchEvents from "react-touch-events";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import './Page.css';
 
 const Page = ({ image, nextPage, previousPage, currentPage, lastPage }) => {
   const [styleImage, setStyleImage] = useState();
+  const [styleArrowLeftPosition, setStyleArrowLeftPosition] = useState();
+  const [styleArrowRightPosition, setStyleArrowRightPosition] = useState();
 
   const widthGreater = {
     height: '100vh',
@@ -19,15 +21,31 @@ const Page = ({ image, nextPage, previousPage, currentPage, lastPage }) => {
 
   useEffect(() => {
     // window.addEventListener("resize", this.updateDimensions.bind(this));
-
     if (window.innerWidth > window.innerHeight) {
       setStyleImage(widthGreater);
     } else {
       setStyleImage(heightGreater);
     }
-
-
   }, []);
+
+  const onImageLoad = ({ target: img }) => {
+    const { offsetHeight, offsetWidth } = img;
+    console.log(offsetHeight, offsetWidth);
+    const positionX = (window.innerWidth - offsetWidth) / 2;
+    console.log('Window X', window.innerWidth);
+    console.log('Image X', offsetWidth);
+    console.log('Posição X', positionX);
+    setStyleArrowLeftPosition({
+      bottom: '0%',
+      left: positionX + 'px',
+      transform: 'translate(0, -50 %)',
+    });
+    setStyleArrowRightPosition({
+      bottom: '0%',
+      right: positionX + 'px',
+      transform: 'translate(0, -50 %)',
+    })
+  };
 
   return (
     <div className='Page'>
@@ -35,19 +53,35 @@ const Page = ({ image, nextPage, previousPage, currentPage, lastPage }) => {
       {currentPage !== 1
         ?
         < div className='Arrow-Left-Container' onClick={previousPage}>
-
-          <FontAwesomeIcon className='ArrowLeft' icon={faAngleLeft} onClick={previousPage} size="2x" color='#BD3D21' />
+          <div className='Circle-Arrow'>
+            <FontAwesomeIcon
+              style={styleArrowLeftPosition}
+              className='ArrowLeft'
+              icon={faAngleLeft}
+              onClick={previousPage}
+              size="2x"
+              color='#BD3D21'
+            />
+          </div>
         </div>
         : null
       }
       <div className='Image-Container'>
-        <img style={styleImage} src={image} alt='' />
+        <img onLoad={onImageLoad} style={styleImage} src={image} alt='' />
       </div>
       {currentPage < lastPage
         ?
         <div className='Arrow-Right-Container' onClick={nextPage}>
-
-          <FontAwesomeIcon className='ArrowRight' icon={faAngleRight} onClick={nextPage} size="2x" color='#BD3D21' />
+          <div className='Circle-Arrow'>
+            <FontAwesomeIcon
+              style={styleArrowRightPosition}
+              className='ArrowRight'
+              icon={faAngleRight}
+              onClick={nextPage}
+              size="2x"
+              color='#BD3D21'
+            />
+          </div>
         </div>
         : null
       }
