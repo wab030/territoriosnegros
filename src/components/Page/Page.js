@@ -7,33 +7,27 @@ import './Page.css';
 const Page = ({ image, nextPage, previousPage, currentPage, lastPage }) => {
   const [styleImage, setStyleImage] = useState();
 
+  const widthGreater = {
+    height: '100vh',
+    backgroundColor: 'black'
+  };
+
+  const heightGreater = {
+    width: '100%',
+    backgroundColor: 'red'
+  }
+
   useEffect(() => {
     // window.addEventListener("resize", this.updateDimensions.bind(this));
-    console.log(window);
-
-    const widthGreater = {
-      height: '100vh',
-      backgroundColor: 'black'
-    };
-
-    const heightGreater = {
-      width: '100%',
-      backgroundColor: 'red'
-    }
 
     if (window.innerWidth > window.innerHeight) {
       setStyleImage(widthGreater);
-      console.log('Comprimento é maior');
     } else {
       setStyleImage(heightGreater);
-      console.log('Altura é maior');
     }
 
 
   }, []);
-
-  console.log('Windows Width', window.innerWidth);
-  console.log('Windows Height', window.innerHeight);
 
   return (
     <div className='Page'>

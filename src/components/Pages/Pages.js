@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import ClipLoader from "react-spinners/ClipLoader";
+import BeatLoader from "react-spinners/BeatLoader";
 import Page from '../Page/Page';
 import Page01 from '../../assets/images/page01.jpeg';
 import Page02 from '../../assets/images/page02.jpeg';
@@ -19,44 +21,48 @@ import Page16 from '../../assets/images/page16.jpeg';
 
 const Pages = () => {
 
-    const [pagesImages, setPagesImages] = useState(
-        [Page01, Page02, Page03, Page04, Page05, Page06, Page07, Page08, Page09, Page10, Page11, Page12, Page13, Page14, Page15, Page16]
-    );
-    const [currentPage, setCurrentPage] = useState(1);
-    const [pages, setPages] = useState();
-    const [currentPageImage, setCurrentPageImage] = useState(pagesImages[0]);
+  const [pagesImages, setPagesImages] = useState(
+    [Page01, Page02, Page03, Page04, Page05, Page06, Page07, Page08, Page09, Page10, Page11, Page12, Page13, Page14, Page15, Page16]
+  );
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pages, setPages] = useState();
+  const [currentPageImage, setCurrentPageImage] = useState(pagesImages[0]);
+  const [loading, setLoading] = useState(false);
 
-//         , Page5, Page6,Page7, Page8, Page9,Page10, Page11, Page12,Page13, Page14, Page15,Page16]
-// )
+  useEffect(() => {
+    setPages(16);
+  })
 
-useEffect(() => {
-  setPages(16);
-})
-
-const previousPage = () => {
+  const previousPage = () => {
+    setLoading(true);
     let newCurrentPage = currentPage - 1;
     setCurrentPage(newCurrentPage);
-    setCurrentPageImage(pagesImages[newCurrentPage-1]);
-};
+    setCurrentPageImage(pagesImages[newCurrentPage - 1]);
+    setLoading(false);
+  };
 
-const nextPage = () => {
-    console.log(currentPage);
+  const nextPage = () => {
+    setLoading(true);
     let newCurrentPage = currentPage + 1;
     setCurrentPage(newCurrentPage);
     setCurrentPageImage(pagesImages[currentPage]);
-}
+    setLoading(false);
+  }
 
-return (
+  console.log('Renderizei');
+
+  return (
     <div className='Pages'>
-        <Page
-            image={currentPageImage}
-            nextPage={nextPage}
-            previousPage={previousPage}
-            currentPage={currentPage}
-            lastPage={pages}
-        />
+      <ClipLoader loading={loading} size={150} />
+      <Page
+        image={currentPageImage}
+        nextPage={nextPage}
+        previousPage={previousPage}
+        currentPage={currentPage}
+        lastPage={pages}
+      />
     </div>
-);
+  );
 };
 
 export default Pages;
