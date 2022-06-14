@@ -30,11 +30,7 @@ const Page = ({ image, nextPage, previousPage, currentPage, lastPage }) => {
 
   const onImageLoad = ({ target: img }) => {
     const { offsetHeight, offsetWidth } = img;
-    console.log(offsetHeight, offsetWidth);
     const positionX = (window.innerWidth - offsetWidth) / 2;
-    console.log('Window X', window.innerWidth);
-    console.log('Image X', offsetWidth);
-    console.log('Posição X', positionX);
     setStyleArrowLeftPosition({
       bottom: '0%',
       left: positionX + 'px',
@@ -49,7 +45,6 @@ const Page = ({ image, nextPage, previousPage, currentPage, lastPage }) => {
 
   return (
     <div className='Page'>
-
       {currentPage !== 1
         ?
         < div className='Arrow-Left-Container' onClick={previousPage}>

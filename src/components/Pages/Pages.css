@@ -1,0 +1,10 @@
+.Credits {
+    font-family: cursive;
+    position: absolute;
+    /* background-color: black; */
+    font-size: 15px;
+    color: #BD3D21;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}

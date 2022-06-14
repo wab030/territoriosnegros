@@ -18,6 +18,7 @@ import Page13 from '../../assets/images/page13.jpeg';
 import Page14 from '../../assets/images/page14.jpeg';
 import Page15 from '../../assets/images/page15.jpeg';
 import Page16 from '../../assets/images/page16.jpeg';
+import './Pages.css'
 
 const Pages = () => {
 
@@ -61,6 +62,11 @@ const Pages = () => {
         currentPage={currentPage}
         lastPage={pages}
       />
+      {
+        currentPage !== 16
+          ? <div className='Credits'>Página desenvolvida por André Luís Bordignon</div>
+          : null
+      }
     </div>
   );
 };
