@@ -63,7 +63,7 @@ const Pages = () => {
         lastPage={pages}
       />
       {
-        currentPage !== 16
+        currentPage === 16
           ? <div className='Credits'>Página desenvolvida por André Luís Bordignon</div>
           : null
       }

@@ -32,12 +32,12 @@ const Page = ({ image, nextPage, previousPage, currentPage, lastPage }) => {
     const { offsetHeight, offsetWidth } = img;
     const positionX = (window.innerWidth - offsetWidth) / 2;
     setStyleArrowLeftPosition({
-      bottom: '0%',
+      top: offsetHeight-40,
       left: positionX + 'px',
       transform: 'translate(0, -50 %)',
     });
     setStyleArrowRightPosition({
-      bottom: '0%',
+      top: offsetHeight-40,
       right: positionX + 'px',
       transform: 'translate(0, -50 %)',
     })
